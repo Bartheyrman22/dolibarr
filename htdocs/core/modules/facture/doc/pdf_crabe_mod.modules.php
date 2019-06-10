@@ -971,23 +971,6 @@ class pdf_crabe_mod extends ModelePDFFactures
 
 		$posxval=52;
 
-		// Show payments conditions
-		if ($object->type != 2 && ($object->cond_reglement_code || $object->cond_reglement))
-		{
-			$pdf->SetFont('','B', $default_font_size - 2);
-			$pdf->SetXY($this->marge_gauche, $posy);
-			$titre = $outputlangs->transnoentities("PaymentConditions").':';
-			$pdf->MultiCell(43, 4, $titre, 0, 'L');
-
-			$pdf->SetFont('','', $default_font_size - 2);
-			$pdf->SetXY($posxval, $posy);
-			$lib_condition_paiement=$outputlangs->transnoentities("PaymentCondition".$object->cond_reglement_code)!=('PaymentCondition'.$object->cond_reglement_code)?$outputlangs->transnoentities("PaymentCondition".$object->cond_reglement_code):$outputlangs->convToOutputCharset($object->cond_reglement_doc);
-			$lib_condition_paiement=str_replace('\n',"\n",$lib_condition_paiement);
-			$pdf->MultiCell(67, 4, $lib_condition_paiement,0,'L');
-
-			$posy=$pdf->GetY()+3;
-		}
-
 		if ($object->type != 2)
 		{
 			// Check a payment mode is defined
@@ -1094,6 +1077,23 @@ class pdf_crabe_mod extends ModelePDFFactures
 				}
 			}
 		}
+
+        // Show payments conditions
+        if ($object->type != 2 && ($object->cond_reglement_code || $object->cond_reglement))
+        {
+            $pdf->SetFont('','B', $default_font_size - 2);
+            $pdf->SetXY($this->marge_gauche, $posy);
+            $titre = $outputlangs->transnoentities("PaymentConditions").':';
+            $pdf->MultiCell(43, 4, $titre, 0, 'L');
+
+            $pdf->SetFont('','', $default_font_size - 4);
+            $pdf->SetXY($this->marge_gauche, $posy + 4);
+            $lib_condition_paiement=$outputlangs->transnoentities("PaymentCondition".$object->cond_reglement_code)!=('PaymentCondition'.$object->cond_reglement_code)?$outputlangs->transnoentities("PaymentCondition".$object->cond_reglement_code):$outputlangs->convToOutputCharset($object->cond_reglement_doc);
+            $lib_condition_paiement=str_replace('\n',"\n",$lib_condition_paiement);
+            $pdf->MultiCell(109, 4, $lib_condition_paiement,0,'J');
+
+            $posy=$pdf->GetY()+3;
+        }
 
 		return $posy;
 	}

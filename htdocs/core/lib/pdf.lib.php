@@ -391,7 +391,11 @@ function pdf_build_address($outputlangs,$sourcecompany,$targetcompany='',$target
     			// EMail
     			if ($sourcecompany->email) $stringaddress .= ($stringaddress ? "\n" : '' ).$outputlangs->transnoentities("Email").": ".$outputlangs->convToOutputCharset($sourcecompany->email);
     			// Web
-    			if ($sourcecompany->url) $stringaddress .= ($stringaddress ? "\n" : '' ).$outputlangs->transnoentities("Web").": ".$outputlangs->convToOutputCharset($sourcecompany->url);
+    			if ($sourcecompany->url) {
+    			    $stringaddress .= ($stringaddress ? "\n" : '' ).$outputlangs->transnoentities("Web").": ".$outputlangs->convToOutputCharset($sourcecompany->url);
+                }
+                // RPR
+                $stringaddress .= ($stringaddress ? "\n" : '' ) . 'RPR' . ': ' . 'Gent, Afdeling Dendermonde';
     		}
     		// Intra VAT
     		if (! empty($conf->global->MAIN_TVAINTRA_IN_SOURCE_ADDRESS))

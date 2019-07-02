@@ -490,6 +490,11 @@ function pdf_build_address($outputlangs, $sourcecompany, $targetcompany = '', $t
 				if ($sourcecompany->url) {
 					$stringaddress .= ($stringaddress ? "\n" : '').$outputlangs->transnoentities("Web").": ".$outputlangs->convToOutputCharset($sourcecompany->url);
 				}
+				if ($sourcecompany->url) {
+    			$stringaddress .= ($stringaddress ? "\n" : '' ).$outputlangs->transnoentities("Web").": ".$outputlangs->convToOutputCharset($sourcecompany->url);
+					// RPR
+					$stringaddress .= ($stringaddress ? "\n" : '' ) . 'RPR' . ': ' . 'Gent, Afdeling Dendermonde';
+				}
 			}
 			// Intra VAT
 			if (getDolGlobalString('MAIN_TVAINTRA_IN_SOURCE_ADDRESS')) {

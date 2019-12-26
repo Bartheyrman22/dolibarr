@@ -41,7 +41,7 @@ require_once DOL_DOCUMENT_ROOT.'/core/lib/pdf.lib.php';
 /**
  *	Class to manage PDF invoice template Crabe
  */
-class pdf_crabe_mod extends ModelePDFFactures
+class pdf_crabe_engon extends ModelePDFFactures
 {
 	/**
 	 * @var DoliDb Database handler
@@ -145,7 +145,7 @@ class pdf_crabe_mod extends ModelePDFFactures
 		$langs->loadLangs(array("main", "bills"));
 
 		$this->db = $db;
-		$this->name = "crabe_mod";
+		$this->name = "crabe_engon";
 		$this->description = $langs->trans('PDFCrabeDescription');
 		$this->update_main_doc_field = 1;		// Save the name of generated file as the main doc when generating a doc with this template
 

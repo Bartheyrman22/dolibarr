@@ -394,6 +394,7 @@ PaymentConditionShort14D=14 dagen
 PaymentCondition14D=14 dagen
 PaymentConditionShort14DENDMONTH=Einde maand over 14 dagen
 PaymentCondition14DENDMONTH=Binnen 14 dagen na het einde van de maand
+DictionaryGeneralConditions=Algemene Voorwaarden
 FixAmount=Vast bedrag
 VarAmount=Variabel bedrag  (%% tot.)
 VarAmountOneLine=Variable amount (%% tot.) - 1 line with label '%s'

@@ -909,7 +909,7 @@ class pdf_azur extends ModelePDFPropales
 		{
 			$pdf->SetFont('','B', $default_font_size - 2);
 			$pdf->SetXY($this->marge_gauche, $posy);
-			$titre = $outputlangs->transnoentities("PaymentConditions").':';
+			$titre = $outputlangs->transnoentities("DictionaryGeneralConditions").':';
 			$pdf->MultiCell(43, 4, $titre, 0, 'L');
 
 			$pdf->SetFont('','', $default_font_size - 2);

@@ -668,7 +668,7 @@ BILL_SUPPLIER_DELETEInDolibarr=Leverancierfactuur verwijderd
 UnitPriceXQtyLessDiscount=Eenheidsprijs x Aantal - Korting
 CustomersInvoicesArea=Factureringsgebied voor klanten
 SupplierInvoicesArea=Factureringsgebied leverancier
-SituationTotalRayToRest=Rest te betalen zonder belasting
+SituationTotalRayToRest=Netto restant te betalen
 PDFSituationTitle=Situatie n ° %d
 SituationTotalProgress=Totale voortgang %d %%
 SearchUnpaidInvoicesWithDueDate=Zoek onbetaalde facturen met een vervaldatum = %s

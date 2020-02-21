@@ -1008,7 +1008,7 @@ class pdf_azur extends ModelePDFPropales
 		if (!getDolGlobalString('PROPOSAL_PDF_HIDE_PAYMENTTERM') && $object->cond_reglement_code) {
 			$pdf->SetFont('', 'B', $default_font_size - $diffsizetitle);
 			$pdf->SetXY($this->marge_gauche, $posy);
-			$titre = $outputlangs->transnoentities("PaymentConditions").':';
+			$titre = $outputlangs->transnoentities("DictionaryGeneralConditions").':';
 			$pdf->MultiCell(43, 4, $titre, 0, 'L');
 
 			$pdf->SetFont('', '', $default_font_size - $diffsizetitle);

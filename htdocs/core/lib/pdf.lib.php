@@ -415,7 +415,6 @@ function pdf_build_address($outputlangs, $sourcecompany, $targetcompany = '', $t
                 }
                 // RPR
                 $stringaddress .= ($stringaddress ? "\n" : '' ) . 'RPR' . ': ' . 'Gent, Afdeling Dendermonde';
-				}
 			}
 			// Intra VAT
 			if (!empty($conf->global->MAIN_TVAINTRA_IN_SOURCE_ADDRESS))

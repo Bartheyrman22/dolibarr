@@ -414,7 +414,7 @@ function pdf_build_address($outputlangs, $sourcecompany, $targetcompany = '', $t
     			    $stringaddress .= ($stringaddress ? "\n" : '' ).$outputlangs->transnoentities("Web").": ".$outputlangs->convToOutputCharset($sourcecompany->url);
                 }
                 // RPR
-                $stringaddress .= ($stringaddress ? "\n" : '' ) . 'RPR' . ': ' . 'Gent, Afdeling Dendermonde';
+                $stringaddress .= ($stringaddress ? "\n" : '' ) . 'RPR' . ': ' . 'Henegouwen, Afdeling Doornik';
 			}
 			// Intra VAT
 			if (!empty($conf->global->MAIN_TVAINTRA_IN_SOURCE_ADDRESS))

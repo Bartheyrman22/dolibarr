@@ -1,0 +1,3 @@
+[submodule "dolibarr_project_timesheet"]
+	path = dolibarr_project_timesheet
+	url = https://github.com/Bartheyrman22/dolibarr_project_timesheet.git

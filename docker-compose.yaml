@@ -1,0 +1,76 @@
+version: '3.7'
+
+networks:
+    symfony_project_2024_net:
+        ipam:
+            driver: default
+            config:
+                - subnet: "172.29.0.0/24"
+
+services:
+    server:
+        build:
+            context: .
+            dockerfile: ./docker/server/Dockerfile
+        container_name: 'dolibarr-server'
+        environment:
+            - PHP_IDE_CONFIG=serverName=dolibarr_server
+        ports:
+            - '80:80'
+            - '5678:8080' # node dev server
+            - '8000:8000' # symfony dev server.
+            - '5173:5173' # vite dev server.
+        working_dir: /var/www/html
+        extra_hosts:
+            - host.docker.internal:host-gateway
+        volumes:
+            - .:/var/www/html
+            - ./dolibarr_project_timesheet/htdocs/timesheet:/var/www/html/htdocs/timesheet
+            - ssh_keys:/root/.ssh
+            - ./docker/server/apache/sites-enabled:/etc/apache2/sites-enabled
+            - ./docker/server/php/php.ini:/usr/local/etc/php/conf.d/extra-php-config.ini
+        networks:
+            symfony_project_2024_net:
+                ipv4_address: 172.29.0.3
+
+    db_server:
+        image: mysql:8.4.1
+        container_name: 'dolibarr-db'
+        restart: always
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'root'
+        volumes:
+            - db_data:/var/lib/mysql
+            - ./docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./docker/db/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+        healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10
+        networks:
+            symfony_project_2024_net:
+                ipv4_address: 172.29.0.2
+        user: mysql
+    mailpit:
+        image: axllent/mailpit
+        restart: unless-stopped
+        volumes:
+            - mailpit_data:/data
+        ports:
+            - '8026:8025'
+            - '1025:1025'
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
+        networks:
+            symfony_project_2024_net:
+                ipv4_address: 172.29.0.4
+
+volumes:
+    db_data:
+    mailpit_data:
+    ssh_keys:

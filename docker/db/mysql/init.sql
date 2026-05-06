@@ -1,0 +1,6 @@
+CREATE USER 'mysql'@'%' IDENTIFIED BY 'mysql';
+GRANT ALL PRIVILEGES ON *.* TO 'mysql'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+CREATE DATABASE dolibarr;
+USE dolibarr;
